@@ -35,7 +35,7 @@ void draw_ship(int x, int y) {
 int main()
 {
 	setcursor(0);
-	int i = 0, bullet[5] = { 0,0,0,0,0 }, xbullet[5];
+	int i = 0, bullet[5] = { 0,0,0,0,0 }, xbullet[5], showbull[5] = { 0,0,0,0,0 };
 	int x = 0, y = 20, direc = 0;
 	char ch = ' ';
 	char ch2 = ' ';
@@ -67,9 +67,11 @@ int main()
 		if (_kbhit()) {
 			ch = _getch();
 			if (ch == ' ') {
-				setcolor(6, 0);
-				bullet[i] = 19;
-				xbullet[i] = x;
+				if (bullet[i] == 0) {
+					setcolor(6, 0);
+					bullet[i] = 19;
+					xbullet[i] = x;
+				}
 				i++;
 				if (i > 4) {
 					i = 0;
@@ -90,19 +92,20 @@ int main()
 			direc = 3;
 		}
 		for (int i = 0; i < 5; i++) {
-			if (bullet[i] > 1) {
-				setcolor(6, 0);
-				gotoxy(xbullet[i], bullet[i]);
-				printf("  ||");
-				Sleep(10);
+			if (bullet[i] > 1){
+					setcolor(6, 0);
+					gotoxy(xbullet[i], bullet[i]);
+					printf("  ||");
+					Sleep(10);
+					showbull[i] = 1;
 			}
 		}
 		for (int i = 0; i < 5; i++) {
 			if (bullet[i] > 1) {
-				setcolor(6, 0);
-				gotoxy(xbullet[i], bullet[i]);
-				printf("    ");
-				Sleep(10);
+					setcolor(6, 0);
+					gotoxy(xbullet[i], bullet[i]);
+					printf("    ");
+					Sleep(10);
 			}
 		}
 		for (int i = 0; i < 5; i++) {
@@ -111,6 +114,10 @@ int main()
 			}
 			else {
 				bullet[i] = 0;
+				showbull[i] = 0;
+			}
+			if (bullet[i] == 3) {
+				showbull[i] = 0;
 			}
 		}
 	} while (ch != 'x');

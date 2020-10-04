@@ -29,7 +29,7 @@ void draw_ship(int x, int y) {
 	x = min(x, 80);
 	y = min(y, 25);
 	gotoxy(x, y);
-	setcolor(6, 8);
+	setcolor(2, 4);
 	printf("<-0->");
 }
 int main()
@@ -42,7 +42,7 @@ int main()
 	draw_ship(x, y);
 	do {
 		if (direc == 1) {
-			setcolor(6, 0);
+			setcolor(2, 0);
 			del(x, y);
 			draw_ship(--x, y);
 			if (x > 80) {
@@ -51,7 +51,7 @@ int main()
 			Sleep(100);
 		}
 		if (direc == 2) {
-			setcolor(6, 0);
+			setcolor(2, 0);
 			del(x, y);
 			draw_ship(++x, y);
 			if (x > 80) {
@@ -60,7 +60,7 @@ int main()
 			Sleep(100);
 		}
 		if (direc == 3) {
-			setcolor(6, 0);
+			setcolor(2, 0);
 			draw_ship(x, y);
 		}
 		//ยิงเริ่มต้น

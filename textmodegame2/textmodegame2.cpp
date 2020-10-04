@@ -92,16 +92,16 @@ int main()
 			direc = 3;
 		}
 		for (int i = 0; i < 5; i++) {
-			if (bullet[i] > 1){
+			if (bullet[i] > 0){
 					setcolor(6, 0);
 					gotoxy(xbullet[i], bullet[i]);
 					printf("  ||");
-					Sleep(10);
+					Sleep(25);
 					showbull[i] = 1;
 			}
 		}
 		for (int i = 0; i < 5; i++) {
-			if (bullet[i] > 1) {
+			if (bullet[i] > 0) {
 					setcolor(6, 0);
 					gotoxy(xbullet[i], bullet[i]);
 					printf("    ");
@@ -109,14 +109,13 @@ int main()
 			}
 		}
 		for (int i = 0; i < 5; i++) {
-			if (bullet[i] > 2) {
+			if (bullet[i] > 0) {
 				bullet[i]--;
 			}
 			else {
 				bullet[i] = 0;
-				showbull[i] = 0;
 			}
-			if (bullet[i] == 3) {
+			if (bullet[i] == 1) {
 				showbull[i] = 0;
 			}
 		}
